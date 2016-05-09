@@ -13,6 +13,10 @@ You need edit (add) this env:
 
 Usage:
 ```
-docker run -d -p 389:389 -p 636:636 -e LDAPORT=389 -e LDAPSPORT=636 -e BASEDN="dc=test -e HOST=localhost -e PASSWORD=password -e DUMPLDAP=test.ldif -v PATHTOLDIFF:/tmp/ oberthur/docker-opendj
+docker run -d -e BASEDN="dc=test -e HOST=localhost -e PASSWORD=password oberthur/docker-opendj
+```
+or
+```
+docker run -d -p 389:389 -p 636:636 -e LDAPORT=389 -e LDAPSPORT=636 -e BASEDN="dc=test" -e HOST=localhost -e PASSWORD=password -e DUMPLDAP=test.ldif -v PATHTOLDIFF:/tmp/ oberthur/docker-opendj
 
 ```
