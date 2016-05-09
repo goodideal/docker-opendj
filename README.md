@@ -2,7 +2,6 @@
 Basic Docker image to run Opendj-Server
 
 You need edit (add) this env:
-- **CLUSTER**: True if you want run opendj in cluster
 - **LDAPORT**: port of ldap default:389
 - **LDAPSPORT**: port of ldap default:636
 - **BASEDN**: basedn
@@ -14,6 +13,6 @@ You need edit (add) this env:
 
 Usage:
 ```
-docker run -d -p 389:389 -p 636:636 -e LDAPORT=389 -e LDAPSPORT=636 -e BASEDN="dc=otlabs -e HOST=localhost -e PASSWORD=password -e DUMPLDAP=otlabs.ldif-v PATHTOLDIFF:/tmp/ oberthur/docker-opendj
+docker run -d -p 389:389 -p 636:636 -e LDAPORT=389 -e LDAPSPORT=636 -e BASEDN="dc=test -e HOST=localhost -e PASSWORD=password -e DUMPLDAP=test.ldif -v PATHTOLDIFF:/tmp/ oberthur/docker-opendj
 
 ```

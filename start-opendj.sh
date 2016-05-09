@@ -1,6 +1,4 @@
 #!/bin/bash
-##HOW TO START docker
-# docker run davka/opendj -p 389:389 -p 636:636 -e LDAPORT=389 -e LDAPSPORT=636 -e BASEDN="dc=otlabs -e HOST=localhost -e PASSWORD=password -e DUMPLDAP=otlabs.ldif-v PATHTOLDIFF:/tmp/
 set -e
 
 ##ENV
