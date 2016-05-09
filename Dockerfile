@@ -1,4 +1,4 @@
-FROM oberthur/docker-ubuntu-java:jdk8_8.71.15
+FROM oberthur/docker-ubuntu-java:jdk8_8.91.14
 
 MAINTAINER Jakub Dawczynski <j.dawczynski@oberthur.com>
 
