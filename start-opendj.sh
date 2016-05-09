@@ -5,6 +5,7 @@ set -e
 echo ${CLUSTER}
 echo ${LDAPORT}
 echo ${LDAPSPORT}
+echo ${ADMINPORT}
 echo ${BASEDN}
 echo ${HOST}
 echo ${CLUSTER_NODE}
@@ -12,7 +13,7 @@ echo ${PASSWORD}
 echo ${DUMPLDAP}
 
 install_LDAP(){
-/opt/opendj/setup --cli --ldapPort ${LDAPORT:-389} --ldapsPort ${LDAPSPORT:-636} --adminConnectorPort ${ADMINPORT:-4444} --enableStartTLS --generateSelfSignedCertificate --baseDN ${BASEDN} -h ${HOST:-localhost} --rootUserPassword "${PASSWORD:-admin123}" --acceptLicense --no-prompt
+  /opt/opendj/setup --cli --ldapPort ${LDAPORT:-389} --ldapsPort ${LDAPSPORT:-636} --adminConnectorPort ${ADMINPORT:-4444} --enableStartTLS --generateSelfSignedCertificate --baseDN ${BASEDN} -h ${HOST:-localhost} --rootUserPassword "${PASSWORD:-admin123}" --acceptLicense --no-prompt
 }
 
 stopServer(){
@@ -20,7 +21,7 @@ stopServer(){
 }
 
 loadFile(){
-/opt/opendj/bin/import-ldif --includeBranch "${BASEDN}" --backendID userRoot --ldifFile /tmp/"${DUMPLDAP}"
+  /opt/opendj/bin/import-ldif --includeBranch "${BASEDN}" --backendID userRoot --ldifFile /tmp/"${DUMPLDAP}"
 }
 
 #start server in foreground
