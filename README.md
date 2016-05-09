@@ -2,13 +2,13 @@
 Basic Docker image to run Opendj-Server
 
 You need edit (add) this env:
-- **LDAPORT**: port of ldap default:389
-- **LDAPSPORT**: port of ldap default:636
+- **LDAPORT**: ldap port default:389
+- **LDAPSPORT**: ldaps port default:636
+- **ADMINPORT**: admin default:4444
 - **BASEDN**: basedn
-- **HOST**: host
+- **HOST**: hostname
 - **PASSWORD**: password for master user
 - **DUMPLDAP**: if you want import ldif file, you need write the name of the file and mount directory to tmp with R-W option
-
 
 
 Usage:

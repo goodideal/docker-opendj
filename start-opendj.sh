@@ -12,7 +12,7 @@ echo ${PASSWORD}
 echo ${DUMPLDAP}
 
 install_LDAP(){
-/opt/opendj/setup --cli -p ${LDAPORT} --ldapsPort ${LDAPSPORT} --enableStartTLS --generateSelfSignedCertificate --baseDN ${BASEDN} -h ${HOST} --rootUserPassword "${PASSWORD}" --acceptLicense --no-prompt
+/opt/opendj/setup --cli --ldapPort ${LDAPORT:-389} --ldapsPort ${LDAPSPORT:-636} --adminConnectorPort ${ADMINPORT:-4444} --enableStartTLS --generateSelfSignedCertificate --baseDN ${BASEDN} -h ${HOST:-localhost} --rootUserPassword "${PASSWORD:-admin123}" --acceptLicense --no-prompt
 }
 
 stopServer(){
@@ -25,7 +25,7 @@ loadFile(){
 
 #start server in foreground
 startServer(){
-  /opt/opendj/bin/start-ds --nodetach
+  exec /opt/opendj/bin/start-ds --nodetach
 }
 
 
