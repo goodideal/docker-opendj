@@ -10,6 +10,7 @@ echo ${HOST:-localhost}
 echo "${PASSWORD:-admin123}"
 
 initLdap(){
+  echo "Initializing Ldap ..."
   /opt/opendj/setup --cli --ldapPort ${LDAPORT:-389} --ldapsPort ${LDAPSPORT:-636} --adminConnectorPort ${ADMINPORT:-4444} --enableStartTLS --generateSelfSignedCertificate --baseDN ${BASEDN:-dc=example,dc=com} -h ${HOST:-localhost} --rootUserPassword "${PASSWORD:-admin123}" --acceptLicense --no-prompt
 }
 
@@ -18,6 +19,7 @@ stopServer(){
 }
 
 loadDump(){
+  echo "Loading dump file ..."
   /opt/opendj/bin/import-ldif --includeBranch "${BASEDN}" --backendID userRoot --ldifFile "${DUMPLDAP}"
 }
 
@@ -30,6 +32,7 @@ if [ "${INIT_LDAP}" == "true" ]; then
 fi
 
 if [ "${LOAD_DUMP}" == "true" ]; then
+    stopServer
     loadDump
+    startServer
 fi
-startServer
