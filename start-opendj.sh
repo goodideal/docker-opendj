@@ -31,7 +31,7 @@ if [ "${INIT_LDAP}" == "true" ]; then
     initLdap
 fi
 
-if [ "${LOAD_DUMP}" == "true" ]; then
+if [ -e "${LOAD_DUMP}" ]; then
     stopServer
     loadDump
     startServer
