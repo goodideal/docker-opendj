@@ -29,10 +29,11 @@ startServer(){
 
 if [ "${INIT_LDAP}" == "true" ]; then
     initLdap
+    stopServer
 fi
 
 if [ -e "${LOAD_DUMP}" ]; then
     stopServer
     loadDump
-    startServer
 fi
+startServer
