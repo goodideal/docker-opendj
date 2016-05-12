@@ -1,24 +1,33 @@
 # docker-opendj
 Basic Docker image to run Opendj-Server
 
-You need edit (add) this env:
-- **LDAPORT**: ldap port (default 389)
-- **LDAPSPORT**: ldaps port (default 636)
-- **ADMINPORT**: admin port (default 4444)
-- **BASEDN**: basedn (default dc=example,dc=com)
-- **HOST**: hostname (default localhost)
-- **PASSWORD**: password for master user (default admin123)
+First run to initialize ldap
+```
+docker run --rm -it \
+    -v /var/ldap/db:/opt/opendj/db:rw \
+    -v /var/ldap/logs:/opt/opendj/logs:rw \
+    -v /var/ldap/config:/opt/opendj/config:rw \
+    --entrypoint bash \
+    oberthur/docker-opendj:2.6.2
+```
 
-
-- **INIT_LDAP**: this should be set only once to configure ldap instance
-- **LOAD_DUMP**: provide full path to dump file that should be imported
+```
+/opt/opendj/setup --cli \
+    --ldapPort 389 --ldapsPort 636 --adminConnectorPort 4444 \
+    --enableStartTLS --generateSelfSignedCertificate \
+    --baseDN dc=example,dc=com \
+    -h hostname \
+    --rootUserPassword "password" \
+    --acceptLicense --no-prompt
+```
 
 Usage:
 ```
-docker run -d -e BASEDN="dc=test -e HOST=localhost -e PASSWORD=password oberthur/docker-opendj
 ```
-or
-```
-docker run -d -p 389:389 -p 636:636 -e LDAPORT=389 -e LDAPSPORT=636 -e BASEDN="dc=test" -e HOST=localhost -e PASSWORD=password -e LOAD_DUMP=/tmp/test.ldif oberthur/docker-opendj
-
+docker run --rm -it \
+    -p 389:389 -p 636:636 -p 4444:4444 \
+    -v /var/ldap/db:/opt/opendj/db:rw \
+    -v /var/ldap/logs:/opt/opendj/logs:rw \
+    -v /var/ldap/config:/opt/opendj/config:rw \
+    oberthur/docker-opendj:2.6.2
 ```
