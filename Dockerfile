@@ -16,6 +16,7 @@ RUN set -x && apt-get update \
     && rm opendj.zip \
     && sed -i 's/# start-ds.java-args=.*/start-ds.java-args=-server -Xms1g -Xmx1g -XX:MaxTenuringThreshold=1 -XX:+UseConcMarkSweepGC -XX:+UseCompressedOops/' /opt/opendj/template/config/java.properties \
     && sed -i 's/# overwrite-env-java-args/overwrite-env-java-args/' /opt/opendj/template/config/java.properties \
+    && mkdir -p /opt/opendj/locks \
     && apt-get purge -y unzip \
     && apt-get clean autoclean \
     && apt-get autoremove --yes \
