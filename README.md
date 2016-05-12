@@ -23,7 +23,6 @@ docker run --rm -it \
 
 Usage:
 ```
-```
 docker run --rm -it \
     -p 389:389 -p 636:636 -p 4444:4444 \
     -v /var/ldap/db:/opt/opendj/db:rw \
