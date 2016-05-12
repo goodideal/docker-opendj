@@ -21,5 +21,4 @@ RUN set -x && apt-get update \
     && apt-get autoremove --yes \
     && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
-COPY start-opendj.sh /opt/opendj/bin/
-ENTRYPOINT ["/opt/opendj/bin/start-opendj.sh"]
+ENTRYPOINT ["/opt/opendj/bin/start-ds", "--nodetach"]
