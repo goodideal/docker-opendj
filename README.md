@@ -8,11 +8,7 @@ docker run --rm -it \
     -v /var/ldap/logs:/opt/opendj/logs:rw \
     -v /var/ldap/config:/opt/opendj/config:rw \
     --entrypoint bash \
-    oberthur/docker-opendj:2.6.2
-```
-
-```
-/opt/opendj/setup --cli \
+    oberthur/docker-opendj:2.6.2 /opt/opendj/setup --cli \
     --ldapPort 389 --ldapsPort 636 --adminConnectorPort 4444 \
     --enableStartTLS --generateSelfSignedCertificate \
     --baseDN dc=example,dc=com \
