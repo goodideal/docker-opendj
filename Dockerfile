@@ -7,11 +7,10 @@ ENV OPENDJ_VERSION=3.0.0 \
     OPENDJ_JAVA_HOME=$JAVA_HOME \
     OPENDJ_JAVA_BIN=$JAVA_HOME/bin/java
 
-
 RUN set -x && apt-get update \
     && apt-get install -y unzip \
     && cd /opt \
-    && curl -o opendj.zip -fSL https://github.com/OpenRock/OpenDJ/releases/download/$OPENDJ_VERSION/opendj-server-$OPENDJ_VERSION.zip \
+    && curl -o opendj.zip -fSL https://github.com/OpenRock/OpenDJ/releases/download/$OPENDJ_VERSION/OpenDJ-$OPENDJ_VERSION.zip \
     && unzip opendj.zip \
     && rm opendj.zip \
     && sed -i 's/# start-ds.java-args=.*/start-ds.java-args=-server -Xms1g -Xmx1g -XX:MaxTenuringThreshold=1 -XX:+UseConcMarkSweepGC -XX:+UseCompressedOops/' /opt/opendj/template/config/java.properties \
