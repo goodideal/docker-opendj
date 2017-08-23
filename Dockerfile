@@ -2,7 +2,7 @@ FROM oberthur/docker-ubuntu-java:jdk8_8.91.14
 
 MAINTAINER Jakub Dawczynski <j.dawczynski@oberthur.com>
 
-ENV OPENDJ_VERSION=2.6.2 \
+ENV OPENDJ_VERSION=3.0.0 \
     OPENDJ_HOME=/opt/opendj \
     OPENDJ_JAVA_HOME=$JAVA_HOME \
     OPENDJ_JAVA_BIN=$JAVA_HOME/bin/java
